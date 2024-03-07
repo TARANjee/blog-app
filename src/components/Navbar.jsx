@@ -22,18 +22,18 @@ export default function Navbar() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user)
+       
         setUser(user)
 
       } else {
         // User is signed out
         // ...
-        console.log("no user")
+        
         setUser(null)
       }
     });
   }, [])
-  console.log(user)
+
 
   return (
 
