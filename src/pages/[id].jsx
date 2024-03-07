@@ -10,6 +10,7 @@ import Modal from '../components/Modal';
 import { IoChevronBack } from "react-icons/io5";
 import { auth } from '../firebase'
 import { ToastContainer, toast } from 'react-toastify';
+import Footer from '../components/Footer'
 
 export default function Details() {
   let { id } = useParams()
@@ -121,7 +122,7 @@ export default function Details() {
 
 
       </div>
-
+      <Footer />
     </div >
   )
 }

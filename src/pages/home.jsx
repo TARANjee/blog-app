@@ -6,10 +6,13 @@ import Navbar from '../components/Navbar';
 import TextField from '@mui/material/TextField';
 import { CiSearch } from "react-icons/ci";
 import { InputAdornment } from '@mui/material';
+import Footer from '../components/Footer';
+import Skeleton from '../components/Skeleton';
 export default function Home() {
   const [posts, setPosts] = useState(null)
   const [input, setInput] = useState('')
-
+  const [loading, setLoading] = useState(true)
+  const [loadingPost, setLoadingPost] = useState([1, 2, 3])
   useEffect(() => {
     const readBlogs = onValue(ref(db, 'blogs'), (snapshot) => {
       let arr = []
@@ -17,6 +20,7 @@ export default function Home() {
         arr.push({ ...data.val(), id: data.key })
       })
       setPosts(arr)
+      setLoading(false)
     });
 
     return () => readBlogs
@@ -56,17 +60,29 @@ export default function Home() {
 
             </div>
           </div>
+          {loading ? (
+            <div className=" mt-10 sm:flex justify-center gap-10 sm:flex-wrap">
+              {loadingPost.map((_,index) => (
+                <Skeleton key={index} />
+              ))}
 
-          <div className=" mt-10 sm:flex justify-center gap-10 sm:flex-wrap">
-            {posts && posts.filter((post) =>
-              post.category.toString().toLowerCase().includes(input.toLowerCase())
-            ).map((post, index) => (
-              <Blog key={index} post={post} />
-            ))}
 
-          </div>
+
+            </div>
+          ) : (
+            <div className=" mt-10 sm:flex justify-center gap-10 sm:flex-wrap">
+              {posts && posts.filter((post) =>
+                post.category.toString().toLowerCase().includes(input.toLowerCase())
+              ).map((post, index) => (
+                <Blog key={index} post={post} />
+              ))}
+
+            </div>
+          )}
+
         </div>
       </div>
+      <Footer />
     </div >
   )
 }
