@@ -53,15 +53,7 @@ export default function Navbar() {
 
                 <div className="flex flex-shrink-0 items-center">
 
-                  <img
-
-                    className="h-10 w-auto"
-
-                    src="Faiz-designstyle-smoothie-m.png"
-
-                    alt="logo"
-
-                  />
+                  <h2 className="text-2xl text-gray-200">My Blogs</h2>
 
                 </div>
 

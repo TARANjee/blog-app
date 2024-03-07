@@ -45,6 +45,7 @@ export default function Details() {
   }
 
   return (
+    <div>
     <div className="h-full mx-auto max-w-7xl bg-white mt-5  ">
       <div className="w-full h-full  px-6 lg:px-8">
         <Modal
@@ -122,7 +123,9 @@ export default function Details() {
 
 
       </div>
-      <Footer />
+      
     </div >
+      <Footer />
+    </div>
   )
 }
