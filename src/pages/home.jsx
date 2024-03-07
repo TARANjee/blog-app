@@ -12,7 +12,9 @@ export default function Home() {
   const [posts, setPosts] = useState(null)
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(true)
-  const [loadingPost, setLoadingPost] = useState([1, 2, 3])
+  const loadingPost = [
+    1, 2, 3
+  ]
   useEffect(() => {
     const readBlogs = onValue(ref(db, 'blogs'), (snapshot) => {
       let arr = []
@@ -62,7 +64,7 @@ export default function Home() {
           </div>
           {loading ? (
             <div className=" mt-10 sm:flex justify-center gap-10 sm:flex-wrap">
-              {loadingPost.map((_,index) => (
+              {loadingPost.map((_, index) => (
                 <Skeleton key={index} />
               ))}
 
